@@ -1,191 +1,224 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://unpkg.com/liquify-css/dist/liquify.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/liquify-css/dist/liquify.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
     <title>Máquina de Rebeldía</title>
     <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #1c1c1c;
+        color: white;
+        font-size: 16px; /* Tamaño de fuente base */
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+      }
+
+      header {
+        text-align: center;
+        padding: 0px;
+        margin-bottom: 0px;
+        margin-top: 10px; /* Ajusta este valor según sea necesario */
+        font-size: 8px;
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        width: 100%;
+        padding: 0px;
+        box-sizing: border-box;
+        margin-top: 0px; /* Ajusta según sea necesario para agregar desplazamiento */
+        overflow-y: auto; /* Cambia a "auto" para permitir la barra de desplazamiento cuando sea necesario */
+      }
+
+      pre {
+        font-size: 14px;
+      }
+
+      #playButton {
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+      }
+
+      .player-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      .player-controls i {
+        margin: 0 10px;
+        cursor: pointer;
+      }
+
+      .control-text {
+        margin: 0 5px;
+      }
+
+      #seekBar {
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      #timeDisplay {
+        margin-top: 10px;
+        font-size: 0.8em;
+      }
+
+      #floatingMenu {
+        position: fixed;
+        top: 0;
+        right: -300px; /* Inicialmente fuera de la pantalla */
+        width: 500px; /* Ancho del menú */
+        height: 100%;
+        background-color: #333;
+        border-right: 1px solid #555; /* Línea que separa el menú */
+        padding: 10px;
+        z-index: 1;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        transition: right 2.3s; /* Agregamos una transición para el efecto de barrido */
+      }
+
+      #floatingMenu ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      #floatingMenu ul li {
+        margin-bottom: 10px; /* Separación entre elementos */
+        color: white;
+        font-size: 16px;
+        padding: 5px; /* Padding para espacio interno */
+        border-bottom: 1px solid #555; /* Línea que separa los elementos */
+      }
+
+      #floatingMenuButton {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background-color: #333;
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        z-index: 2;
+      }
+      #floatingMenuButton:hover {
+        background-color: #555;
+      }
+
+      #floatingMenu ul li:hover {
+        background-color: #201f1f; /* Cambia el color al pasar el ratón sobre un elemento */
+      }
+
+      .lyrics {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif, sans-serif; /* Reemplaza 'TuTipoDeLetra' con el nombre del tipo de letra que deseas usar */
+        font-size: 12px; /* Ajusta el tamaño de fuente según sea necesario */
+        line-height: 1; /* Ajusta la altura de línea según sea necesario */
+        color: #ffffff; /* Color del texto, ajusta según tu diseño */
+        word-wrap: break-word; /* Romper palabras largas cuando no quepan en una línea */
+        overflow-y: auto; /* Agrega una barra de desplazamiento vertical si el contenido es más largo que la pantalla */
+        text-align: center;
+
+
+    }
+
+      @media screen and (max-width: 600px) {
         body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #1c1c1c;
-            color: white;
-            font-size: 16px; /* Tamaño de fuente base */
+          font-size: 14px; /* Ajusta el tamaño de fuente para pantallas más pequeñas */
         }
-
-        header {
-            text-align: center;
-            padding: 0px;
-            margin-bottom: 0px;
-            margin-top: 10px; /* Ajusta este valor según sea necesario */
-            font-size: 8px;
+        .lyrics {
+          font-size: 8px; /* Ajusta el tamaño de fuente para pantallas más pequeñas si es necesario */
         }
-
-        main {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            width: 100%;
-            padding: 0px;
-            box-sizing: border-box;
-            margin-top: 0px; /* Ajusta según sea necesario para agregar desplazamiento */
-            overflow-y: auto; /* Cambia a "auto" para permitir la barra de desplazamiento cuando sea necesario */
-   }
-
-        pre{
-            font-size: 14px;
+        #floatingMenu {
+          width: 100%; /* Cambia el ancho del menú para pantallas más pequeñas */
         }
-
-        
-
-        #playButton {
-            width: 50px;
-            height: 50px;
-            cursor: pointer;
-        }
-
-        .player-controls {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
         .player-controls i {
-            margin: 0 10px;
-            cursor: pointer;
-        }
-
-        .control-text {
-            margin: 0 5px;
+          margin: 0 5px; /* Reducir el espacio entre los íconos */
         }
 
         #seekBar {
-            width: 100%;
-            margin-top: 10px;
+          margin-top: 5px; /* Ajustar el espacio superior del control de búsqueda */
         }
 
         #timeDisplay {
-            margin-top: 10px;
-            font-size: 0.8em;
+          margin-top: 5px; /* Ajustar el espacio superior del indicador de tiempo */
         }
-
         #floatingMenu {
-            position: fixed;
-            top: 0;
-            right: -300px; /* Inicialmente fuera de la pantalla */
-            width: 500px; /* Ancho del menú */
-            height: 100%;
-            background-color: #333;
-            border-right: 1px solid #555; /* Línea que separa el menú */
-            padding: 10px;
-            z-index: 1;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            transition: right 2.3s; /* Agregamos una transición para el efecto de barrido */
-        }
-
-        #floatingMenu ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        #floatingMenu ul li {
-            margin-bottom: 10px; /* Separación entre elementos */
-            color: white;
-            font-size: 16px;
-            padding: 5px; /* Padding para espacio interno */
-            border-bottom: 1px solid #555; /* Línea que separa los elementos */
+          width: 50%; /* Ajusta el ancho del menú para pantallas más pequeñas */
+          right: 0; /* Alinea el menú a la derecha en pantallas pequeñas */
+          box-shadow: none; /* Elimina la sombra en pantallas pequeñas si es necesario */
         }
 
         #floatingMenuButton {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            background-color: #333;
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            z-index: 2;
+          right: 20px; /* Ajusta la posición del botón para que no se superponga con el menú */
         }
-        #floatingMenuButton:hover {
-            background-color: #555;
-        }
-
-        #floatingMenu ul li:hover {
-            background-color: #201f1f; /* Cambia el color al pasar el ratón sobre un elemento */
-        }
-
-        @media screen and (max-width: 600px) {
-    body {
-        font-size: 14px; /* Ajusta el tamaño de fuente para pantallas más pequeñas */
-    }
-    #floatingMenu {
-        width: 100%; /* Cambia el ancho del menú para pantallas más pequeñas */
-    }
-    .player-controls i {
-        margin: 0 5px; /* Reducir el espacio entre los íconos */
-    }
-
-    #seekBar {
-        margin-top: 5px; /* Ajustar el espacio superior del control de búsqueda */
-    }
-
-    #timeDisplay {
-        margin-top: 5px; /* Ajustar el espacio superior del indicador de tiempo */
-    }
-}
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <h1>Eskorbuto - Ha llegado el momento</h1>
+      <h1>Eskorbuto - Ha llegado el momento</h1>
     </header>
 
     <main class="liquify">
-        <!-- Botón para mostrar/ocultar el menú flotante -->
-        <button id="floatingMenuButton">🎵</button>
+      <!-- Botón para mostrar/ocultar el menú flotante -->
+      <button id="floatingMenuButton">🎵</button>
 
-        <!-- Menú flotante -->
-        <div id="floatingMenu">
-            <ul>
-                <li data-id="song1">Eskorbuto - Ha llegado el momento</li>
-                <li data-id="song2">Non Servium - El espititu del Oi</li>
-                <li data-id="song3">Non Servium - Nuestra lucha</li>
-                <li data-id="song4">El último ke Zierre - Olor a muerte</li>
-                <li data-id="song5">Eskorbuto - Historia triste</li>
-                <li data-id="song6">Eskorbuto - Os engañan</li>
-                <li data-id="song7">Nalgas - Con dinero baila el perro</li>
-                <li data-id="song8">Máquina de rebeldía - Injusticia</li>
-                <li data-id="song9">Máquina de rebeldía - Sistema corrupto</li>
-                <li data-id="song10">Máquina de rebeldía - Caos</li>
-                <!-- Agrega más canciones según sea necesario -->
-            </ul>
-        </div>
-        <div class="player-controls">
-            <i class="fas fa-backward" id="backwardButton"></i>
-            <span class="control-text">-5 seg.</span>
-            <i class="fas fa-play" id="playPauseButton"></i>
-            <span class="control-text">+5 seg.</span>
-            <i class="fas fa-forward" id="forwardButton"></i>
-        </div>
+      <!-- Menú flotante -->
+      <div id="floatingMenu">
+        <ul>
+          <li data-id="song1">Eskorbuto - Ha llegado el momento</li>
+          <li data-id="song2">Non Servium - El espititu del Oi</li>
+          <li data-id="song3">Non Servium - Nuestra lucha</li>
+          <li data-id="song4">El último ke Zierre - Olor a muerte</li>
+          <li data-id="song5">Eskorbuto - Historia triste</li>
+          <li data-id="song6">Eskorbuto - Os engañan</li>
+          <li data-id="song7">Nalgas - Con dinero baila el perro</li>
+          <li data-id="song8">Máquina de rebeldía - Injusticia</li>
+          <li data-id="song9">Máquina de rebeldía - Sistema corrupto</li>
+          <li data-id="song10">Máquina de rebeldía - Caos</li>
+          <!-- Agrega más canciones según sea necesario -->
+        </ul>
+      </div>
+      <div class="player-controls">
+        <i class="fas fa-backward" id="backwardButton"></i>
+        <span class="control-text">-5 seg.</span>
+        <i class="fas fa-play" id="playPauseButton"></i>
+        <span class="control-text">+5 seg.</span>
+        <i class="fas fa-forward" id="forwardButton"></i>
+      </div>
 
-        <input type="range" id="seekBar" value="0" max="100">
+      <input type="range" id="seekBar" value="0" max="100" />
 
-        <div id="timeDisplay">0:00 / 0:00</div>
+      <div id="timeDisplay">0:00 / 0:00</div>
 
-        <section class="lyrics">
-            <pre>
+      <section class="lyrics">
+        <pre>
                 ---------melodia (2)----------
 
                 oaeo (2)
@@ -223,123 +256,128 @@
                 
                 
                 
-                --------------------------------------------</pre>
-        </section>
+                --------------------------------------------</pre
+        >
+      </section>
     </main>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.core.min.js"></script>
     <script src="scripts.js"></script>
     <script>
+      var sound = new Howl({
+        src: ["audio/Perfect.mp3"],
+        volume: 0.5,
+        onend: function () {
+          // Lógica a realizar cuando la canción termine
+        },
+      });
 
-        
-        var sound = new Howl({
-            src: ['audio/Perfect.mp3'],
-            volume: 0.5,
-            onend: function () {
-                // Lógica a realizar cuando la canción termine
-            }
-        });
+      var seekBar = document.getElementById("seekBar");
+      var timeDisplay = document.getElementById("timeDisplay");
+      var isSeeking = false;
 
-        var seekBar = document.getElementById('seekBar');
-        var timeDisplay = document.getElementById('timeDisplay');
-        var isSeeking = false;
+      sound.on("play", function () {
+        seekBar.max = sound.duration();
+        requestAnimationFrame(updateSeekBar);
+      });
 
-        sound.on('play', function () {
-            seekBar.max = sound.duration();
-            requestAnimationFrame(updateSeekBar);
-        });
+      sound.on("end", function () {
+        seekBar.value = 0;
+        timeDisplay.textContent = "0:00 / 0:00";
+      });
 
-        sound.on('end', function () {
-            seekBar.value = 0;
-            timeDisplay.textContent = '0:00 / 0:00';
-        });
-
-        $('#playPauseButton').on('click', function () {
-            if (sound.playing()) {
-                sound.pause();
-            } else {
-                sound.play();
-                
-            }
-        });
-
-        $('#backwardButton').on('click', function () {
-            var currentTime = sound.seek();
-            sound.seek(currentTime - 5);
-            updateTimeDisplay();
-        });
-
-        $('#forwardButton').on('click', function () {
-            var currentTime = sound.seek();
-            sound.seek(currentTime + 5);
-            updateTimeDisplay();
-        });
-
-        seekBar.addEventListener('input', function () {
-            var seekValue = parseFloat(seekBar.value);
-            sound.seek(seekValue);
-            updateTimeDisplay();
-        });
-
-        seekBar.addEventListener('mousedown', function () {
-            isSeeking = true;
-            
-        });
-
-        seekBar.addEventListener('mouseup', function () {
-            isSeeking = false;
-            seekBar.max = sound.duration();
-            requestAnimationFrame(updateSeekBar);
-        });
-
-        function updateSeekBar() {
-            if (sound.playing() && !isSeeking) {
-                seekBar.value = sound.seek();
-                updateTimeDisplay();
-                requestAnimationFrame(updateSeekBar);
-            }
+      $("#playPauseButton").on("click", function () {
+        if (sound.playing()) {
+          sound.pause();
+        } else {
+          sound.play();
         }
+      });
 
-        function updateTimeDisplay() {
-            var currentTime = formatTime(Math.round(sound.seek()));
-            var duration = formatTime(Math.round(sound.duration()));
-            timeDisplay.textContent = currentTime + ' / ' + duration;
+      $("#backwardButton").on("click", function () {
+        var currentTime = sound.seek();
+        sound.seek(currentTime - 5);
+        updateTimeDisplay();
+      });
+
+      $("#forwardButton").on("click", function () {
+        var currentTime = sound.seek();
+        sound.seek(currentTime + 5);
+        updateTimeDisplay();
+      });
+
+      seekBar.addEventListener("input", function () {
+        var seekValue = parseFloat(seekBar.value);
+        sound.seek(seekValue);
+        updateTimeDisplay();
+      });
+
+      seekBar.addEventListener("mousedown", function () {
+        isSeeking = true;
+      });
+
+      seekBar.addEventListener("mouseup", function () {
+        isSeeking = false;
+        seekBar.max = sound.duration();
+        requestAnimationFrame(updateSeekBar);
+      });
+
+      function updateSeekBar() {
+        if (sound.playing() && !isSeeking) {
+          seekBar.value = sound.seek();
+          updateTimeDisplay();
+          requestAnimationFrame(updateSeekBar);
         }
+      }
 
-        function formatTime(seconds) {
-            var minutes = Math.floor(seconds / 60);
-            var remainingSeconds = seconds % 60;
-            return minutes + ':' + (remainingSeconds < 10 ? '0' : '') + remainingSeconds;
+      function updateTimeDisplay() {
+        var currentTime = formatTime(Math.round(sound.seek()));
+        var duration = formatTime(Math.round(sound.duration()));
+        timeDisplay.textContent = currentTime + " / " + duration;
+      }
+
+      function formatTime(seconds) {
+        var minutes = Math.floor(seconds / 60);
+        var remainingSeconds = seconds % 60;
+        return (
+          minutes + ":" + (remainingSeconds < 10 ? "0" : "") + remainingSeconds
+        );
+      }
+
+      // Muestra/oculta el menú flotante al hacer clic en el botón
+      $("#floatingMenuButton").on("click", function () {
+        $("#floatingMenu").toggle();
+      });
+      $("#floatingMenu ul li").on("click", function () {
+        var songId = $(this).data("id");
+        loadSongData(songId);
+      });
+
+      $(document).on("click", function (event) {
+        var $floatingMenu = $("#floatingMenu");
+        var $button = $("#floatingMenuButton");
+
+        // Verifica si el clic no ocurrió dentro del menú o en el botón
+        if (
+          !(
+            $floatingMenu.is(event.target) ||
+            $floatingMenu.has(event.target).length ||
+            $button.is(event.target)
+          )
+        ) {
+          $floatingMenu.hide();
         }
+      });
 
-        // Muestra/oculta el menú flotante al hacer clic en el botón
-        $('#floatingMenuButton').on('click', function () {
-            $('#floatingMenu').toggle();
-        });
-        $('#floatingMenu ul li').on('click', function () {
-    var songId = $(this).data('id');
-    loadSongData(songId);
-});
+      function loadSongData(songId) {
+        // Implementa lógica para cargar la letra y el audio según el ID de la canción
+        // Por ejemplo, puedes usar un objeto que contenga información de las canciones
 
-        $(document).on('click', function (event) {
-            var $floatingMenu = $('#floatingMenu');
-            var $button = $('#floatingMenuButton');
-
-            // Verifica si el clic no ocurrió dentro del menú o en el botón
-            if (!($floatingMenu.is(event.target) || $floatingMenu.has(event.target).length || $button.is(event.target))) {
-                $floatingMenu.hide();
-            }
-        });
-
-        function loadSongData(songId) {
-    // Implementa lógica para cargar la letra y el audio según el ID de la canción
-    // Por ejemplo, puedes usar un objeto que contenga información de las canciones
-
-    var songData = {
-        'song1': {
-            name: 'Eskorbuto - Ha llegado el momento',
-            audioSrc: 'audio/Perfect.mp3',
+        var songData = {
+          song1: {
+            name: "Eskorbuto - Ha llegado el momento",
+            audioSrc: "audio/Perfect.mp3",
             lyrics: `
             ---------melodia (2)----------
 
@@ -379,11 +417,11 @@ Ha llegado el momento, de la destrucción
 
 
 --------------------------------------------
-            `
-        },
-        'song2': {
-            name: 'Non Servium - El espiritu del Oi',
-            audioSrc: 'audio/044 Camila - Lágrimas.mp3',
+            `,
+          },
+          song2: {
+            name: "Non Servium - El espiritu del Oi",
+            audioSrc: "audio/044 Camila - Lágrimas.mp3",
             lyrics: `
                 -------Melodia (2)(2) hoy (2)------
 
@@ -468,12 +506,12 @@ Con nosotros no podrán
 
 
 -------------------------------------------
-            `
-        },
+            `,
+          },
 
-        'song3': {
-            name: 'Non Servium - Nuestra lucha',
-            audioSrc: 'audio/044 Camila - Lágrimas.mp3',
+          song3: {
+            name: "Non Servium - Nuestra lucha",
+            audioSrc: "audio/044 Camila - Lágrimas.mp3",
             lyrics: `
 Ten muy claro que no cuentas conmigo
 Debes saber que eres mi enemigo
@@ -555,12 +593,12 @@ NOOOOOO
 
 
 ----------------------------------------
-`
-        },
+`,
+          },
 
-        'song4': {
-            name: 'El último ke Zierre - Olor a muerte',
-            audioSrc: 'audio/044 Camila - Lágrimas.mp3',
+          song4: {
+            name: "El último ke Zierre - Olor a muerte",
+            audioSrc: "audio/044 Camila - Lágrimas.mp3",
             lyrics: `
 Te has mirado al espejo con complejo,
 
@@ -595,11 +633,11 @@ Intro (2)
 
 
 --------------------------
-`
-        },
-        'song5': {
-            name: 'Eskorbuto - Historia triste',
-            audioSrc: 'audio/044 Camila - Lágrimas.mp3',
+`,
+          },
+          song5: {
+            name: "Eskorbuto - Historia triste",
+            audioSrc: "audio/044 Camila - Lágrimas.mp3",
             lyrics: `
 Pasan los años
 Pasa tu vida
@@ -654,11 +692,11 @@ Uooh
 
 
 ----------------------------
-`
-        },
-        'song6': {
-            name: 'Eskorbuto - Os engañan',
-            audioSrc: 'audio/044 Camila - Lágrimas.mp3',
+`,
+          },
+          song6: {
+            name: "Eskorbuto - Os engañan",
+            audioSrc: "audio/044 Camila - Lágrimas.mp3",
             lyrics: `
 Anuncios publicitarios
 Que prometen felicidad
@@ -694,11 +732,11 @@ Oh, si, si, os engañan, os engañan así
 
 
 -----------------------
-`
-        },
-        'song7': {
-            name: 'Nalgas - Con dinero baila el perro',
-            audioSrc: 'audio/044 Camila - Lágrimas.mp3',
+`,
+          },
+          song7: {
+            name: "Nalgas - Con dinero baila el perro",
+            audioSrc: "audio/044 Camila - Lágrimas.mp3",
             lyrics: `
 Mi país se hunde, nadie hace nada
 La gente se divide, ¡qué pendejada!
@@ -766,11 +804,11 @@ Aunque se esfuerzen no la van a librar
 
 
 -------------------------------------------------------------------
-`
-        },
-        'song8': {
-            name: 'Máquina de rebeldía - Injusticia',
-            audioSrc: 'audio/044 Camila - Lágrimas.mp3',
+`,
+          },
+          song8: {
+            name: "Máquina de rebeldía - Injusticia",
+            audioSrc: "audio/044 Camila - Lágrimas.mp3",
             lyrics: `
             La gente habla, la gente grita
 Pero nadie hace nada
@@ -817,11 +855,11 @@ No permitiremos mas injusticia (bis2)
 
 
 ------------------------
-`
-        },
-        'song9': {
-            name: 'Máquina de rebeldía - Sistema corrupto',
-            audioSrc: 'audio/044 Camila - Lágrimas.mp3',
+`,
+          },
+          song9: {
+            name: "Máquina de rebeldía - Sistema corrupto",
+            audioSrc: "audio/044 Camila - Lágrimas.mp3",
             lyrics: `
 La vida es un juego de azar
 Donde siempre pierde el mismo
@@ -872,11 +910,11 @@ Que nos quita todo, todo
 
 
 --------------------------
-`
-        },
-        'song10': {
-            name: 'Máquina de rebeldía - Caos',
-            audioSrc: 'audio/044 Camila - Lágrimas.mp3',
+`,
+          },
+          song10: {
+            name: "Máquina de rebeldía - Caos",
+            audioSrc: "audio/044 Camila - Lágrimas.mp3",
             lyrics: `
 Caos, caos, en mi ciudad,
 Gritando muy fuerte, revolución!
@@ -896,30 +934,30 @@ Protesta constante, sin ceder.
 
 
 ...................
-`
-        },
-        // Agrega más información de las canciones según sea necesario
-    };
+`,
+          },
+          // Agrega más información de las canciones según sea necesario
+        };
 
-    // Cargar la letra y el audio de la canción seleccionada
-    var selectedSong = songData[songId];
-    sound.unload(); // Detener la reproducción de la canción actual
-    sound = new Howl({
-        src: [selectedSong.audioSrc],
-        volume: 0.5,
-        onend: function () {
+        // Cargar la letra y el audio de la canción seleccionada
+        var selectedSong = songData[songId];
+        sound.unload(); // Detener la reproducción de la canción actual
+        sound = new Howl({
+          src: [selectedSong.audioSrc],
+          volume: 0.5,
+          onend: function () {
             // Lógica a realizar cuando la canción termine
-        }
-    });
-    $('#timeDisplay').text('0:00 / 0:00'); // Restablecer la información de tiempo
-    updateSeekBar(); // Actualizar la barra de búsqueda
+          },
+        });
+        $("#timeDisplay").text("0:00 / 0:00"); // Restablecer la información de tiempo
+        updateSeekBar(); // Actualizar la barra de búsqueda
 
-    // Mostrar la letra de la canción
-    $('.lyrics pre').text(selectedSong.lyrics);
+        // Mostrar la letra de la canción
+        $(".lyrics pre").text(selectedSong.lyrics);
 
-    // Actualizar el título con el nombre de la canción
-    $('header h1').text(selectedSong.name);
-}  
+        // Actualizar el título con el nombre de la canción
+        $("header h1").text(selectedSong.name);
+      }
     </script>
-</body>
+  </body>
 </html>
