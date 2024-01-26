@@ -17,6 +17,7 @@
             margin: 0;
             background-color: #1c1c1c;
             color: white;
+            font-size: 16px; /* Tamaño de fuente base */
         }
 
         header {
@@ -123,6 +124,26 @@
         #floatingMenu ul li:hover {
             background-color: #201f1f; /* Cambia el color al pasar el ratón sobre un elemento */
         }
+
+        @media screen and (max-width: 600px) {
+    body {
+        font-size: 14px; /* Ajusta el tamaño de fuente para pantallas más pequeñas */
+    }
+    #floatingMenu {
+        width: 100%; /* Cambia el ancho del menú para pantallas más pequeñas */
+    }
+    .player-controls i {
+        margin: 0 5px; /* Reducir el espacio entre los íconos */
+    }
+
+    #seekBar {
+        margin-top: 5px; /* Ajustar el espacio superior del control de búsqueda */
+    }
+
+    #timeDisplay {
+        margin-top: 5px; /* Ajustar el espacio superior del indicador de tiempo */
+    }
+}
     </style>
 </head>
 
