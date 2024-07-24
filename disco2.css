@@ -1,0 +1,142 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  html{
+    font-size: 62.5%;
+    font-family:"Roboto", sans-serif;
+  }
+body {
+    width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #1c1c1c;
+  color: white;
+  font-size: 1rem; /* Tamaño de fuente base */
+}
+
+header {
+    width: 100%;
+  text-align: center;
+  padding: 0px;
+  margin-bottom: 0px;
+  margin-top: 10px; /* Ajusta este valor según sea necesario */
+  font-size: 8px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(36, 33, 30);
+  width: 100%;
+  padding: 0px;
+  box-sizing: border-box;
+  margin-top: 0px; /* Ajusta según sea necesario para agregar desplazamiento */
+  overflow-y: auto; /* Cambia a "auto" para permitir la barra de desplazamiento cuando sea necesario */
+}
+.menu_flotante{
+    border-radius: 50%
+}
+
+.lyrics {
+    line-height: 1.5; /* Ajusta la altura de línea según sea necesario */
+    color: #ffffff; /* Color del texto, ajusta según tu diseño */
+    /*word-wrap: break-word; /* Romper palabras largas cuando no quepan en una línea */
+    word-wrap: break-word; /* Para navegadores más antiguos */
+    overflow-wrap: break-word; /* Propiedad más reciente */
+    width: 100%;
+
+  }
+  pre {
+    height: 100vh;
+    width: 100%;
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: 300;
+}
+
+#playButton {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.player-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.player-controls i {
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.control-text {
+  margin: 0 5px;
+}
+
+#seekBar {
+  width: 100%;
+  margin-top: 10px;
+}
+
+#timeDisplay {
+  margin-top: 10px;
+  font-size: 0.8em;
+}
+
+#floatingMenu {
+  position: fixed;
+  top: 0;
+  right: -300px; /* Inicialmente fuera de la pantalla */
+  width: 500px; /* Ancho del menú */
+  height: 100%;
+  background-color: #333;
+  border-right: 1px solid #555; /* Línea que separa el menú */
+  padding: 10px;
+  z-index: 1;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transition: right 2.3s; /* Agregamos una transición para el efecto de barrido */
+}
+
+#floatingMenu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#floatingMenu ul li {
+  margin-bottom: 10px; /* Separación entre elementos */
+  color: white;
+  font-size: 16px;
+  padding: 5px; /* Padding para espacio interno */
+  border-bottom: 1px solid #555; /* Línea que separa los elementos */
+}
+
+#floatingMenuButton {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 2;
+}
+#floatingMenuButton:hover {
+  background-color: #555;
+}
+
+#floatingMenu ul li:hover {
+  background-color: #201f1f; /* Cambia el color al pasar el ratón sobre un elemento */
+}
+
+
