@@ -718,3 +718,4 @@ Protesta constante, sin ceder.
         // Actualizar el título con el nombre de la canción
         $("header h1").text(selectedSong.name);
       }
+

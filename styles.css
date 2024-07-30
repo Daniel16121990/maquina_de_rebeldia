@@ -1,19 +1,25 @@
 /* Agrega estilos para el nombre del disco */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html{
+    font-size: 62.5%;
+  }
 .disc p {
     text-align: center;
-    margin: 10px 0;
     font-size: 1.2em;
 }
 
 body {
     font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
     background-color: #1c1c1c; /* Color de fondo oscuro */
     color: white;
 }
 
-header {
+.header {
+    width: 100%;
     background-color: #333;
     color: white;
     padding: 10px;
@@ -22,12 +28,16 @@ header {
     justify-content: space-between;
     align-items: center;
 }
-
-.cover-photo img {
-    max-width: 100%;
+.header .cover-photo{
+    width: 100%;
+}
+.header .cover-photo img {
+    width: 100%;
     height: auto;
 }
-
+nav{
+    margin: 0 auto;
+}
 nav ul {
     list-style: none;
     display: flex;
@@ -62,12 +72,34 @@ nav a {
 
 .disc img {
     width: 100%;
+    height: 100%;
     height: auto;
     transition: transform 0.3s ease-in-out;
 }
 
-.disc:hover img {
-    transform: scale(1.1);
+/* calendario */
+#calendar {
+    width: 100%;
+    background-color: #1a1515; /* Fondo negro para el calendario */
+    border: 1px solid #fff; /* Borde blanco alrededor del calendario */
 }
-
-/* Personaliza más estilos según tus preferencias */
+.fc-row {
+    border-color: #ff0000; /* Color de las líneas */
+}
+.fc-day-top {
+    color: #fff; /* Color de los números de los días */
+    background-color: #077e07; /* Fondo de los días de la semana */
+}
+.fc-day-header {
+    background-color: #0b6b0b; /* Fondo de las cabeceras de los días de la semana */
+    color: #fff; /* Color del texto de las cabeceras */
+}
+.fc-content-skeleton table td {
+    border: 2px solid #555; /* Color y grosor de las líneas de las fechas */
+}
+.fc-day, .fc-widget-content {
+    border: 1px solid #555; /* Color y grosor de las líneas de las fechas */
+}
+.fc-title {
+    color: #fff; /* Color del texto de los eventos */
+}

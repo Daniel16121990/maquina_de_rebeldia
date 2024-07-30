@@ -1,22 +1,27 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
     <link rel="stylesheet" href="styles.css">
+
+    <link href='https://fullcalendar.io/releases/fullcalendar/3.9.0/fullcalendar.min.css' rel='stylesheet' />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css' rel='stylesheet' />
+
     <title>🤘 Máquina de Rebeldía</title>
+
 </head>
 <body>
-    <header data-aos="fade-down">
+    <header class="header">
         <div class="cover-photo">
-            <img src="imagenes/portada.png" alt="Foto de Portada">
+            <img src="imagenes/portada.webp" alt="Foto de Portada">
         </div>
         <nav>
             <ul>
-                <li><a href="#">Disco 1</a></li>
-                <li><a href="#">Disco 2</a></li>
+                <li><a href="#">Discografía</a></li>
+                <li><a href="#">Calendario</a></li>
+                <li><a href="#">Fotos</a></li>
                 <!-- Agrega más discos según sea necesario -->
             </ul>
         </nav>
@@ -38,12 +43,16 @@
             </div>
             <!-- Agrega más discos según sea necesario -->
         </section>
+        <!-- <div id= "calendar">
+        </div> -->
+
     </main>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="scripts.js"></script>
+    <script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/lib/moment.min.js'></script>
+    <script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/lib/jquery.min.js'></script>
+    <script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/fullcalendar.min.js'></script>
+    <script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/locale/es.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js'></script>
+    <script src="./index.js"></script>
 </body>
 </html>
