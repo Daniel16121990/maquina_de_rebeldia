@@ -3,27 +3,32 @@ $(document).ready(function() {
         locale: 'es',
         events: [
             {
-                title: 'Disponible para Contrataciones',
-                start: '2024-08-01',
-                color: 'green',
-                url: 'https://via.placeholder.com/150' // URL de la imagen
+                title: 'Evento Reservado',
+                start: '2023-12-16',
+                url: './imagenes/16Dic2023.webp'
             },
             {
                 title: 'Evento Reservado',
-                start: '2024-08-10',
-                color: 'red',
-                url: 'https://via.placeholder.com/150'
+                start: '2024-02-10',
+                url: './imagenes/10Feb2024.webp'
+            },
+            {
+                title: 'Disponible para Contrataciones',
+                start: '2024-08-15',
+                end: '2024-09-30',
+                color: 'green',
             },
             {
                 title: 'No Disponible',
-                start: '2024-08-15',
-                end: '2024-08-17',
-                color: 'yellow'
+                start: '2024-08-01',
+                end: '2024-08-15',
+                color: 'red'
             }
+            
         ],
         eventRender: function(event, element) {
             if (event.url) {
-                element.find('.fc-title').append('<br/><img src="' + event.url + '" class="event-image" style="width:100%;"/>');
+                element.find('.fc-title').append('<br/><img src="' + event.url + '" class="event-image"/>');
             }
         },
         eventClick: function(event) {

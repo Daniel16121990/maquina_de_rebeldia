@@ -103,3 +103,11 @@ nav a {
 .fc-title {
     color: #fff; /* Color del texto de los eventos */
 }
+.event-image {
+    width: 100%;
+    height: auto;
+    max-height: 100px; /* Ajusta esto según sea necesario */
+    display: block;
+    margin: 5px 0; /* Añadir margen para separación */
+    object-fit: contain; /* Asegura que la imagen se ajuste dentro del contenedor */
+}
