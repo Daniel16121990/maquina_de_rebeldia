@@ -189,14 +189,14 @@ nav a {
 
 .eventos-tabla th {
     padding: 12px;
-    border: 1px solid var(--color4_boton2);
+    border: 1px solid var(--color3_graficas);
     font-family: var(--fuente3);
     color: var(--color3_graficas);
     font-weight: 900;
 }
 .eventos-tabla td{
     padding: 12px;
-    border: 1px solid var(--color4_boton2);
+    border: 1px solid var(--color3_graficas);
     font-family: var(--fuente3);
     color: var(--color3_graficas);
 }
