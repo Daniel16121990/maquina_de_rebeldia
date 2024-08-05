@@ -1,3 +1,15 @@
+@font-face {
+    font-family: 'punk';
+    src: url('./fonts/Funkrocker.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'punk2';
+    src: url('./fonts/edo.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
 /* Agrega estilos para el nombre del disco */
 :root{
     --color1_background:#060D0C; /*fuente*/
@@ -7,14 +19,16 @@
    --color4_boton2: #50F296;/*tarjetas*/
 
  
-   --fuente_base: 1.5rem;
+   --fuente_base: 1.3rem;
    --fuente_titutlo: 2.5rem;
    --funete_subtitutlo: 2rem;
  
-   --fuente1: 'Rock Salt', cursive;
-   --fuente2: "Open Sans", sans-serif;
+   --fuente1: "punk", sans-serif;
+   --fuente2: "punk2", sans-serif;
+   --fuente3: "roboto"
 
  }
+
 *{
     padding: 0;
     margin: 0;
@@ -29,7 +43,7 @@ html{
 }
 
 body {
-    font-family: var(--fuente1);
+    font-family: var(--fuente2);
     background-color: var(--color1_background); /* Color de fondo oscuro */
     color: var(--color3_graficas);
 }
@@ -46,11 +60,36 @@ body {
 }
 .header .cover-photo{
     width: 100%;
+    height: 20vh;
+    background-image: url(./imagenes/portada.webp);
+    background-size: cover; /* Hace que la imagen cubra todo el div */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white; /* Color del texto para que sea legible sobre la imagen */
+    text-align: center; /* Centra el texto */
+    padding: 20px; /* Espacio interno para que el contenido no toque los bordes */
 }
-.header .cover-photo img {
-    width: 100%;
-    height: auto;
+.header .cover-photo img{
+    width: 120px;
 }
+.header .cover-photo p{
+    font-family: var(--fuente2);
+    font-size: var(--fuente_titutlo);
+    animation: vibracion 0.001s infinite alternate;
+}
+@keyframes vibracion {
+
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(5px);
+    }
+}
+
 nav{
     margin: 0 auto;
 }
@@ -86,9 +125,10 @@ nav a {
 .discografia .div_titulo p{
     text-align: center;
     margin: 10px 0;
-    font-size: var(--fuente_titutlo);
+    font-size: var(--funete_subtitutlo);
     color: var(--color3_graficas);
-    font-weight: 700;
+    font-weight: 500;
+    font-family: var(--fuente2);
 }
 
 .discografia .discografia_discos {
@@ -101,7 +141,7 @@ nav a {
 }
 .discografia .discografia_discos p{
     color: var(--color3_graficas);
-    font-weight: 700;
+    font-weight: 500;
     font-size: var(--fuente_base);
 }
 
@@ -131,34 +171,66 @@ nav a {
 .section_calendario p{
     text-align: center;
     margin: 10px 0;
-    font-size: var(--fuente_titutlo);
+    font-size: var(--funete_subtitutlo);
     color: var(--color3_graficas);
-    font-weight: 700;}
-.fc-row {
-    border-color: #ff0000; /* Color de las líneas */
+    font-weight: 500;
+    font-family: var(--fuente2);
 }
-.fc-day-top {
-    color: #fff; /* Color de los números de los días */
-    background-color: #077e07; /* Fondo de los días de la semana */
-}
-.fc-day-header {
-    background-color: #1f1e1c; /* Fondo de las cabeceras de los días de la semana */
-    color: #fff; /* Color del texto de las cabeceras */
-}
-.fc-content-skeleton table td {
-    border: 2px solid #555; /* Color y grosor de las líneas de las fechas */
-}
-.fc-day, .fc-widget-content {
-    border: 1px solid #555; /* Color y grosor de las líneas de las fechas */
-}
-.fc-title {
-    color: #fff; /* Color del texto de los eventos */
-}
-.event-image {
+
+
+/* *******************************tabla */
+.eventos-tabla {
     width: 100%;
-    height: auto;
-    max-height: 100px; /* Ajusta esto según sea necesario */
-    display: block;
-    margin: 5px 0; /* Añadir margen para separación */
-    object-fit: contain; /* Asegura que la imagen se ajuste dentro del contenedor */
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+.eventos-tabla th {
+    padding: 12px;
+    border: 1px solid var(--color4_boton2);
+    font-family: var(--fuente3);
+    color: var(--color3_graficas);
+    font-weight: 900;
+}
+.eventos-tabla td{
+    padding: 12px;
+    border: 1px solid var(--color4_boton2);
+    font-family: var(--fuente3);
+    color: var(--color3_graficas);
+}
+
+.flyer {
+    width: 50px; /* Tamaño pequeño para la tabla */
+    cursor: pointer;
+}
+/* Magnific Popup estilos */
+.mfp-bg {
+    z-index: 1042;
+}
+
+.mfp-wrap {
+    z-index: 1043;
+}
+
+/* footer, contactos y redes sociales */
+.footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.footer .contactos{
+    width: 100%;
+    margin-top: 50px; 
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-around;
+    color: var(--color3_boton);
+}
+.footer p{
+    font-family: var(--fuente3);
+    font-size: var(--fuente_base);
+    color: aliceblue;
+    font-weight: 500;
 }

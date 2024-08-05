@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
 
-    <link href='https://fullcalendar.io/releases/fullcalendar/3.9.0/fullcalendar.min.css' rel='stylesheet' />
-<link href='https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
 
     <title>🤘 Máquina de Rebeldía</title>
 
@@ -15,11 +14,12 @@
 <body>
     <header class="header">
         <div class="cover-photo">
-            <img src="imagenes/portada.webp" alt="Foto de Portada">
+            <img src="./imagenes/logo.webp" alt="logo Maquina de rebeldia, un perro punk bien rebelde">
+            <p>MAQUINA DE REBELDIA</p>
         </div>
         <nav>
             <ul>
-                <li><a href="#">Discografía</a></li>
+                <li><a href="#">Discografia</a></li>
                 <li><a href="#">Calendario</a></li>
                 <li><a href="#">Fotos</a></li>
                 <!-- Agrega más discos según sea necesario -->
@@ -30,7 +30,7 @@
     <main>
         <section class="discografia">
             <div class="div_titulo">
-                <p>Discografía</p>
+                <p>DISCOGRAFIA</p>
             </div>
             <div class="discografia_discos">
                 <div class="disc" id="disco1" data-aos="fade-up">
@@ -50,19 +50,52 @@
         </section>
 
         <section class="section_calendario">
-            <p>Calendario</p>
-            <div class="calendario" id= "calendar">
+            <p>CALENDARIO</p>
+            <div class="tabla_eventos">
+                <table class="eventos-tabla">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Ciudad</th>
+                            <th>Lugar</th>
+                            <th>Flyer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>10-Feb. 2024</td>
+                            <td>El Alto</td>
+                            <td>La casa del Zippo</td>
+                            <td><a href="./imagenes/10Feb2024.webp" class="flyer-popup"><img src="./imagenes/10Feb2024.webp" class="flyer" alt="Flyer del evento 1"></a></td>
+                        </tr>
+                        <tr>
+                            <td>16-Dic. 2024</td>
+                            <td>El Alto</td>
+                            <td>La casa del Zippo</td>
+                            <td><a href="./imagenes/16Dic2023.webp" class="flyer-popup"><img src="./imagenes/16Dic2023.webp" class="flyer" alt="Flyer del evento 2"></a></td>
+                        </tr>
+                        <!-- Más filas según sea necesario -->
+                    </tbody>
+                </table>
             </div>
         </section>
 
 
     </main>
+    <footer class="footer">
+        <section class="contactos">
+            <p>Facebook</p>
+            <p>Youtube</p>
+            <p>TikTok</p>
+            <p>Spotify</p>
+            <p>Whatsapp</p>
+        </section>
+        <p>® Máquina de Rebeldía</p>
+        <p>© Todos los derechos reservados</p>
+    </footer>
 
-    <script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/lib/moment.min.js'></script>
-    <script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/lib/jquery.min.js'></script>
-    <script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/fullcalendar.min.js'></script>
-    <script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/locale/es.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js'></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
     <script src="./index.js"></script>
 </body>
 </html>
